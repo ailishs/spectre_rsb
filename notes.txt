@@ -1,0 +1,13 @@
+	//ange and I tried it...it did not work as intended....we are thinking that we need to try overflowing the return
+	//stack buffer...but how???
+	
+	/*
+	 * The following instrs cause a return stack pop if predicted:
+	 * LDR pc, [r13], #imm
+	 * LDM r13 {...pc}
+	 * LDM r13, {...pc}!
+	 * */	
+	 
+	 /*
+	  * LDR RD -> places an address in a literal pool then loads address into a register, can load any 32-bit numeric value 
+	  * */
