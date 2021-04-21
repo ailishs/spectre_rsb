@@ -1,13 +1,115 @@
 	//ange and I tried it...it did not work as intended....we are thinking that we need to try overflowing the return
 	//stack buffer...but how???
 	
-	/*
-	 * The following instrs cause a return stack pop if predicted:
+
+The following instrs cause a return stack pop if predicted:
 	 * LDR pc, [r13], #imm
 	 * LDM r13 {...pc}
 	 * LDM r13, {...pc}!
-	 * */	
 	 
-	 /*
-	  * LDR RD -> places an address in a literal pool then loads address into a register, can load any 32-bit numeric value 
-	  * */
+	 
+LDR RD -> places an address in a literal pool then loads address into a register, can load any 32-bit numeric value 
+
+
+	//call 8 funcitons 
+	
+	/*
+	 * func()
+	 * {
+	 * 	funcb()
+	 * 		{
+	 * 			funcc()
+	 * 			{
+	 * 			}		
+	 * 		}
+	 * }*/
+	 
+	 //speculative func() 9th or 10th func in call
+	 //need return address to be the 9th entry
+	 //will need 9 funcs to call 
+	 //s
+	 
+	 
+	 
+	 
+/*
+int function3()
+{
+	int count3 = 0;
+	for(int i = 0; i < 100; i++)
+	{
+		count3 = i;
+	}
+	int answer3 = function4();
+	return 0;
+}
+void function4()
+{
+	int count4 = 0;
+	for(int i = 0; i < 100; i++)
+	{
+		count4 = i;
+	}
+	function5();
+}
+
+void function5()
+{
+	int count5 = 0;
+	for(int i = 0; i < 100; i++)
+	{
+		count5 = i;
+	}
+	function6();
+}
+
+void function6()
+{
+	int count6 = 0;
+	for(int i = 0; i < 100; i++)
+	{
+		count6 = i;
+	}
+	function7();
+}
+
+void function7()
+{
+	int count7 = 0;
+	for(int i = 0; i < 100; i++)
+	{
+		count7 = i;
+	}
+	function8();
+}
+
+void function8()
+{
+	int count8 = 0;
+	for(int i = 0; i < 100; i++)
+	{
+		count8 = i;
+	}
+	
+	function9();
+}*/
+
+/*void function9()
+{ //this is where we put the malicious code and try and store a secret...i think...
+	int count = 0;
+	for(int i = 0; i < 100; i++)
+	{
+		count = i;
+	}
+	
+}*/
+
+
+
+/*void main()
+{
+	printf("I am in main");
+	gadget();
+	//return 0;
+}*/
+
