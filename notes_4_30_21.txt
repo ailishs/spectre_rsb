@@ -1,0 +1,32 @@
+notes from meeting with lehman and ange 4/30/2021
+
+issues: even if we do overfill, not neccessarily speculating? we aren't sure...
+       - except for the very last one how do we capitalize on this speculation?? 
+       - how do we take advantage? 
+       - lehman -> thinks it is easier to overfill it
+      
+      
+       - f1 rturn -> will not find return address and will start predicting
+			- will predict return address which triggers speculation
+			- if we don't do anything else, it will go back to main and execute subsequent code which will be most likely the 
+			attack...? 
+			- do NOTHING, if doesn't work, try and figure out a system to train our gadget
+			- need to align PC of f1 return to another pc where we call gadget repetedively 
+			- target address table/buffer, find out how big it is
+				- we need two bits in pc to match up with this pc 
+				- come up with a program that runs before f2() which is an alias of the pc for the gadget	
+	
+		- mistrain, need to figure out how big address table and need to know which bits are used 
+		- reverse engineer! - take training code and change the poostiion where you return from a function 
+		- call gadget function then call function 
+		- simplify life and use a simipler code to reverse engineer, w/ branching you are always using the target address buffer
+		- branch target address cache -> 256 entries 
+			- know we need 8 bits to index into it 
+			- possibly the 8 lsb
+			- how to find the pc for return instruction -> objdump the binary and that has the pc address
+			- could use gdb to find the pc address OR use objdump and it spits out assembly 
+					-> objdump -d binaryfile also in commands in txt file
+					- return address you use to mispredict has the same low 8 as actual address 
+					- then look at high order bits		
+			- don't worry about transparancy 
+       
